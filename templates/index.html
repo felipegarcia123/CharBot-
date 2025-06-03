@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Médico</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="chat-container">
+    
+    <!-- Encabezado visual -->
+    <div class="chat-info">
+      <img src="{{ url_for('static', filename='img/logo_pulmones.png') }}" alt="Chatbot Logo">
+      <h2>Lung Cancer Expert Chatbot</h2>
+      <p>Ask any questions about lung cancer and I will do my best to help.</p>
+    </div>
+
+    <!-- Mensajes y entrada -->
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Escribe tu mensaje...">
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+
+</html>
