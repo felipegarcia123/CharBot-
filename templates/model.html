@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Entrenamiento - Modelo IA</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style_model.css') }}"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <img
+        src="{{ url_for('static', filename='img/logo_pulmones.png') }}"
+        alt="Logo"
+        class="logo"
+      />
+      <h1>Entrenamiento</h1>
+      <p>MODELO IA</p>
+      <img
+        src="{{ url_for('static', filename='img/doctor_icon.png') }}"
+        alt="Icono doctor"
+        class="icon"
+      />
+    </div>
+
+    <div class="container">
+      <form id="classifyForm">
+        <input
+          type="file"
+          id="imageInput"
+          name="file"
+          accept="image/*"
+          required
+        />
+        <br />
+        <button type="submit">Clasificar</button>
+      </form>
+    </div>
+
+    <div id="modal">
+      <div id="modalContent">
+        <span id="closeModal">❌</span>
+        <h2>Resultado de Clasificación</h2>
+        <div id="resultContainer"></div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/model.js') }}"></script>
+  </body>
+</html>

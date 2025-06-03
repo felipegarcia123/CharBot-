@@ -13,10 +13,10 @@ function sendMessage() {
   chat.innerHTML += `<div class="message user"><span>${message}</span></div>`;
   input.value = '';
 
-  fetch('/chat', {
+  fetch('http://0.0.0.0:8000/chatbot/response', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message: message })
+    body: JSON.stringify({ user_input: message })
   })
   .then(response => response.json())
   .then(data => {
