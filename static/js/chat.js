@@ -18,12 +18,21 @@ function sendMessage() {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ user_input: message })
   })
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Servidor respondió con código ${response.status}`);
+    }
+    return response.json();
+  })
   .then(data => {
     chat.innerHTML += renderBotMessage(data.response);
     chat.scrollTop = chat.scrollHeight;
   })
-  .catch(error => console.error('Error:', error));
+  .catch(error => {
+    console.error('Error:', error);
+    chat.innerHTML += renderBotMessage("⚠️ Lo siento, en este momento no puedo responder. Parece que el sistema no está disponible.");
+    chat.scrollTop = chat.scrollHeight;
+  });
 }
 
 function renderBotMessage(text) {
